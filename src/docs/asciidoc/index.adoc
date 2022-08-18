@@ -1,0 +1,26 @@
+= 전국 사업자 연합 커뮤니티
+:sectnums:
+:toc: left
+:toclevels: 4
+:toc-title: Table of Contents
+:source-highlighter: prettify
+
+Kim Ah In <kai6666@naver.com>
+
+v1.0.0, 2022.08.18
+
+***
+== MemberController
+=== 회원 전체 조회
+.curl-request
+include::{snippets}/get-members/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-members/http-request.adoc[]
+
+.http-response
+include::{snippets}/get-members/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-members/response-fields.adoc[]
+
