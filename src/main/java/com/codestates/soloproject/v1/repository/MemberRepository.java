@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    @Query(value = "SELECT m FROM Member m WHERE m.companyType = :companyType")
+    @Query(value = "SELECT * FROM MEMBER WHERE m.companyType = :companyType")
     List<Member> findByCompanyType( int companyType);
 
-    @Query(value = "SELECT m FROM Member m WHERE m.companyLocation = :companyLocation")
+    @Query(value = "SELECT * FROM MEMBER WHERE m.companyLocation = :companyLocation")
     List<Member> findByCompanyLocation( int companyLocation);
 }
