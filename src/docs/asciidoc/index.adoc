@@ -24,3 +24,18 @@ include::{snippets}/get-members/http-response.adoc[]
 .response-fields
 include::{snippets}/get-members/response-fields.adoc[]
 
+=== 업종별 조회
+.curl-request
+include::{snippets}/get-membersByOption/curl-request.adoc[]
+
+.http-request
+include::{snippets}/get-membersByOption/http-request.adoc[]
+
+.request-parameters
+include::{snippets}/get-membersByOption/request-parameters.adoc[]
+
+.http-response
+include::{snippets}/get-membersByOption/http-response.adoc[]
+
+.response-fields
+include::{snippets}/get-membersByOption/response-fields.adoc[]

@@ -1,5 +1,6 @@
 package com.codestates.soloproject.v1.service;
 
+import com.codestates.soloproject.v1.entity.CompanyType;
 import com.codestates.soloproject.v1.entity.Member;
 import com.codestates.soloproject.v1.repository.MemberRepository;
 import org.springframework.data.domain.Page;
@@ -22,14 +23,9 @@ public class MemberService {
         return memberRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
     }
 
-    //타입 조회
-    public List<Member> findMemberByType(int page, int size, int companyType) {
-        List<Member> memberOpt = memberRepository.findByCompanyType(companyType);
-        return memberOpt;
-    }
-    //지역 조회
-    public List<Member> findMemberByLocation(int page, int size, int companyLocation) {
-        List<Member> memberOpt = memberRepository.findByCompanyLocation(companyLocation);
+    //조건 조회
+    public List<Member> getMembersByOption(int page, int size, Long typeCode, Long locationCode) {
+        List<Member> memberOpt = memberRepository.findByOption(typeCode, locationCode);
         return memberOpt;
     }
 }

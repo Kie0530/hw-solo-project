@@ -7,13 +7,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "COMPANY_LOCATION")
 @Data
 @NoArgsConstructor
 public class CompanyLocation {
     @Id
-//    private List<Integer> locationCode;
-    private int locationCode;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long locationCode;
 
     @Column(nullable = false, unique = true)
     private String locationName;

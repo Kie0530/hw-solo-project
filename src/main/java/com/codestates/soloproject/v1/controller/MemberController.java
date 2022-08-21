@@ -4,6 +4,7 @@ import com.codestates.soloproject.v1.dto.ResponseDto;
 import com.codestates.soloproject.v1.entity.Member;
 import com.codestates.soloproject.v1.service.MemberService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,21 +30,19 @@ public class MemberController {
         return new ResponseEntity<>(new ResponseDto<>(members, membersPage), HttpStatus.OK);
     }
 
-    //타입 조회
-    @GetMapping("/{companyType}")
+    //조건 조회
+    @GetMapping("/search")
     public ResponseEntity getMemberByType(@RequestParam(value = "page", defaultValue = "1") int page,
                                           @RequestParam(value = "size", defaultValue = "10") int size,
-                                          @PathVariable("companyType") int companyType) {
-        List<Member> members = memberService.findMemberByType(page, size, companyType);
-        return new ResponseEntity<>(members, HttpStatus.OK);
+                                          @RequestParam(value = "type") Long typeCode,
+                                          @RequestParam(value = "location") Long locationCode) {
+        List<Member> members = memberService.getMembersByOption(page-1, size, typeCode, locationCode);
+        System.out.println(members);
+        System.out.println(typeCode);
+        System.out.println(locationCode);
+        System.out.println("===============================");
+        Page<Member> memberPage = new PageImpl<>(members);
+        return new ResponseEntity<>(new ResponseDto<>(members, memberPage), HttpStatus.OK);
     }
 
-    //지역 조회
-    @GetMapping("/{companyLocation}")
-    public ResponseEntity getMemberByLocation(@RequestParam(value = "page", defaultValue = "1") int page,
-                                              @RequestParam(value = "size", defaultValue = "10") int size,
-                                              @PathVariable("companyLocation") int companyLocation) {
-        List<Member> members = memberService.findMemberByLocation(page, size, companyLocation);
-        return new ResponseEntity<>(members, HttpStatus.OK);
-    }
 }
